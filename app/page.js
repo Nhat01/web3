@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Nav from "./components/navbar/Nav";
 import Sidebar from "./components/sidebar/Sidebar";
+import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
    return (
@@ -12,13 +13,13 @@ export default function Home() {
             <div className="h-screen mt-[10px] relative top-nav-size">
                <Sidebar />
                <div className="w-[100%] pl-[224px] pr-size-space">
-                  <div className="flex w-full h-[200px]">
-                     <div className="bg-white flex-1 mr-size-space rounded-lg flex relative">
-                        <div className="w-[50%] p-4 z-[2]">
+                  <div className="flex w-full h-[240px] items-center">
+                     <div className="bg-white flex-1 mr-size-space rounded-lg flex relative h-full">
+                        <div className="w-[50%] p-5 z-[2]">
                            <h1 className="pb-[15px] text-2xl font-bold">
-                              Shopping
+                              ĐÂY LÀ TIÊU ĐỀ 1 NÈ HE!!!
                            </h1>
-                           <p className="text-[11px]">
+                           <p className="text-[12px]">
                               Đây là trang web của CLB Coder. Nếu bạn yêu thích
                               hãy để lại 1 Like và một chút tấm lòng để chúng
                               mình có thêm động lực làm tiếp.
@@ -44,23 +45,27 @@ export default function Home() {
                               width="0"
                               height="0"
                               sizes="100vw"
+                              style={{ objectFit: "contain" }}
                               alt="image"
                               className="absolute w-[80%] h-[112%] top-[-24px] right-[-70px] z-[1]"
                            />
                         </div>
                      </div>
-                     <div className="bg-white w-[30%] z-[2] rounded-lg">
+                     <div className="bg-white w-[34%] z-[2] rounded-lg h-[220px]">
                         <div className="p-4">
                            <p className="m-0 font-bold">Your Blance</p>
-                           <span className="text-[10px] text-[#8c8c8c]">
-                              Crypto0987654ertg...
-                           </span>
-                           <h1 className="p-3 font-bold text-2xl">
+                           <div className="flex">
+                              <span className="text-[11px] text-[#8c8c8c]">
+                                 Crypto0987654ertgcksncdjjd...
+                              </span>
+                              <DocumentDuplicateIcon className="h-4 w-4 text-green-700" />
+                           </div>
+                           <h1 className="py-4 font-bold text-3xl">
                               $345,765.23
                            </h1>
                            <div>
                               <span className="text-sm mr-3">Total Offers</span>
-                              <span className="text-[10px] font-bold">
+                              <span className="text-[11px] font-bold">
                                  USD 976,789
                                  <span className="text-green-700 font-bold">
                                     (90.12%)
@@ -69,7 +74,7 @@ export default function Home() {
                            </div>
                            <button
                               type="button"
-                              className="py-1 px-7 bg-[#b5ffff] rounded-xl mt-2 text-sm font-bold hover:bg-[#fca5f1] hover:text-white transition-all duration-300 w-full"
+                              className="py-1 px-7 bg-[#b5ffff] rounded-xl mt-4 text-sm font-bold hover:bg-[#fca5f1] hover:text-white transition-all duration-300 w-full"
                            >
                               Add Balance
                            </button>
@@ -77,24 +82,49 @@ export default function Home() {
                      </div>
                   </div>
 
+                  <div className="flex mt-size-space">
+                     <div className="flex-1 mr-size-space rounded-lg flex justify-between relative  font-mono">
+                        <h2 className="font-bold">Trend NFTs</h2>
+                        <div className="text-[13px]">
+                           <button className="bg-white rounded-[5px] px-[15px] mr-4">
+                              Arts
+                           </button>
+                           <button className="bg-white  rounded-[5px] px-[15px] mr-4">
+                              Arts
+                           </button>
+                           <button className="bg-white  rounded-[5px] px-[15px]">
+                              Arts
+                           </button>
+                        </div>
+                     </div>
+                     <div className="w-[34%]">
+                        <div className="flex justify-between font-mono">
+                           <h2 className="font-bold">Live Auctions</h2>
+                           <button className="bg-white  rounded-[5px] px-[15px] text-[13px]">
+                              View all
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+
                   <div className=" flex mt-size-space">
-                     <div className=" flex-1 mr-8 grid grid-cols-3 gap-8">
+                     <div className=" flex-1 mr-size-space grid grid-cols-3 gap-size-space">
                         <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
                            <div className="relative h-72">
                               <Image
-                                 className="rounded-xl"
+                                 className="rounded-t-xl"
                                  alt="card-1"
                                  src="/images/2487539c2657a919339904b125f54e55.jpg"
                                  fill
                                  style={{ objectFit: "content" }}
                               />
                            </div>
-                           <div className="p-5 flex-1">
-                              <div className="text-[10px] font-light mb-3">
+                           <div className="px-4 py-2 flex-1">
+                              <div className="text-[10px] font-light mb-2">
                                  <p className="mb-1">@hungpham</p>
                                  <span className="">Thể loại - chuyên mục</span>
                               </div>
-                              <h5 className="uppercase font-bold text-xl mb-3">
+                              <h5 className="uppercase font-bold text-xl mb-2">
                                  Thẻ Pokemon
                               </h5>
                               <p className="text-[10px] font-light">
@@ -103,7 +133,7 @@ export default function Home() {
                                     5.0 ETH
                                  </span>
                               </p>
-                              <span className="text-[10px] font-light block">
+                              <span className="text-[8px] font-light block">
                                  @Crypto
                                  <span className="float-right text-[#8C8C8C] font-bold">
                                     Lost Soid For: 9.99 ETH
@@ -114,19 +144,19 @@ export default function Home() {
                         <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
                            <div className="relative h-72">
                               <Image
-                                 className="rounded-xl"
+                                 className="rounded-t-xl"
                                  alt="card-1"
                                  src="/images/2487539c2657a919339904b125f54e55.jpg"
                                  fill
                                  style={{ objectFit: "content" }}
                               />
                            </div>
-                           <div className="p-5 flex-1">
-                              <div className="text-[10px] font-light mb-3">
+                           <div className="px-4 py-3 flex-1">
+                              <div className="text-[10px] font-light mb-2">
                                  <p className="mb-1">@hungpham</p>
                                  <span className="">Thể loại - chuyên mục</span>
                               </div>
-                              <h5 className="uppercase font-bold text-xl mb-3">
+                              <h5 className="uppercase font-bold text-xl mb-2">
                                  Thẻ Pokemon
                               </h5>
                               <p className="text-[10px] font-light">
@@ -135,7 +165,7 @@ export default function Home() {
                                     5.0 ETH
                                  </span>
                               </p>
-                              <span className="text-[10px] font-light block">
+                              <span className="text-[8px] font-light block">
                                  @Crypto
                                  <span className="float-right text-[#8C8C8C] font-bold">
                                     Lost Soid For: 9.99 ETH
@@ -146,19 +176,19 @@ export default function Home() {
                         <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
                            <div className="relative h-72">
                               <Image
-                                 className="rounded-xl"
+                                 className="rounded-t-xl"
                                  alt="card-1"
                                  src="/images/2487539c2657a919339904b125f54e55.jpg"
                                  fill
                                  style={{ objectFit: "content" }}
                               />
                            </div>
-                           <div className="p-5 flex-1">
-                              <div className="text-[10px] font-light mb-3">
+                           <div className="px-4 py-2 flex-1">
+                              <div className="text-[10px] font-light mb-2">
                                  <p className="mb-1">@hungpham</p>
                                  <span className="">Thể loại - chuyên mục</span>
                               </div>
-                              <h5 className="uppercase font-bold text-xl mb-3">
+                              <h5 className="uppercase font-bold text-xl mb-2">
                                  Thẻ Pokemon
                               </h5>
                               <p className="text-[10px] font-light">
@@ -167,7 +197,7 @@ export default function Home() {
                                     5.0 ETH
                                  </span>
                               </p>
-                              <span className="text-[10px] font-light block">
+                              <span className="text-[8px] font-light block">
                                  @Crypto
                                  <span className="float-right text-[#8C8C8C] font-bold">
                                     Lost Soid For: 9.99 ETH
@@ -178,19 +208,19 @@ export default function Home() {
                         <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
                            <div className="relative h-72">
                               <Image
-                                 className="rounded-xl"
+                                 className="rounded-t-xl"
                                  alt="card-1"
                                  src="/images/2487539c2657a919339904b125f54e55.jpg"
                                  fill
                                  style={{ objectFit: "content" }}
                               />
                            </div>
-                           <div className="p-5 flex-1">
-                              <div className="text-[10px] font-light mb-3">
+                           <div className="px-4 py-2 flex-1">
+                              <div className="text-[10px] font-light mb-2">
                                  <p className="mb-1">@hungpham</p>
                                  <span className="">Thể loại - chuyên mục</span>
                               </div>
-                              <h5 className="uppercase font-bold text-xl mb-3">
+                              <h5 className="uppercase font-bold text-xl mb-2">
                                  Thẻ Pokemon
                               </h5>
                               <p className="text-[10px] font-light">
@@ -199,7 +229,7 @@ export default function Home() {
                                     5.0 ETH
                                  </span>
                               </p>
-                              <span className="text-[10px] font-light block">
+                              <span className="text-[8px] font-light block">
                                  @Crypto
                                  <span className="float-right text-[#8C8C8C] font-bold">
                                     Lost Soid For: 9.99 ETH
@@ -210,19 +240,19 @@ export default function Home() {
                         <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
                            <div className="relative h-72">
                               <Image
-                                 className="rounded-xl"
+                                 className="rounded-t-xl"
                                  alt="card-1"
                                  src="/images/2487539c2657a919339904b125f54e55.jpg"
                                  fill
                                  style={{ objectFit: "content" }}
                               />
                            </div>
-                           <div className="p-5 flex-1">
-                              <div className="text-[10px] font-light mb-3">
+                           <div className="px-4 py-2 flex-1">
+                              <div className="text-[10px] font-light mb-2">
                                  <p className="mb-1">@hungpham</p>
                                  <span className="">Thể loại - chuyên mục</span>
                               </div>
-                              <h5 className="uppercase font-bold text-xl mb-3">
+                              <h5 className="uppercase font-bold text-xl mb-2">
                                  Thẻ Pokemon
                               </h5>
                               <p className="text-[10px] font-light">
@@ -231,7 +261,7 @@ export default function Home() {
                                     5.0 ETH
                                  </span>
                               </p>
-                              <span className="text-[10px] font-light block">
+                              <span className="text-[8px] font-light block">
                                  @Crypto
                                  <span className="float-right text-[#8C8C8C] font-bold">
                                     Lost Soid For: 9.99 ETH
@@ -240,7 +270,47 @@ export default function Home() {
                            </div>
                         </div>
                      </div>
-                     <div className="bg-white h-10 w-[30%]"></div>
+                     <div className="bg-white h-min w-[34%] grid grid-cols-2 gap-4 rounded-xl">
+                        <div className="rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
+                           <div className="relative h-64">
+                              <Image
+                                 className="rounded-t-xl"
+                                 alt="card-1"
+                                 src="/images/2487539c2657a919339904b125f54e55.jpg"
+                                 fill
+                                 style={{ objectFit: "content" }}
+                              />
+                           </div>
+
+                           <div className="px-4 py-2 flex-1">
+                              <div className="text-[10px] font-light mb-2">
+                                 @hungpham
+                              </div>
+                              <h5 className="uppercase font-bold text-base mb-2">
+                                 Thẻ Pokemon
+                              </h5>
+                           </div>
+                        </div>
+                        <div className="rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
+                           <div className="relative h-64">
+                              <Image
+                                 className="rounded-t-xl"
+                                 alt="card-1"
+                                 src="/images/2487539c2657a919339904b125f54e55.jpg"
+                                 fill
+                                 style={{ objectFit: "content" }}
+                              />
+                           </div>
+                           <div className="px-4 py-2 flex-1">
+                              <div className="text-[10px] font-light mb-2">
+                                 @hungpham
+                              </div>
+                              <h5 className="uppercase font-bold text-base mb-2">
+                                 Thẻ Pokemon
+                              </h5>
+                           </div>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
