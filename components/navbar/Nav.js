@@ -4,7 +4,7 @@ import Search from "./Search";
 
 const Nav = () => {
    return (
-      <div className="grid grid-cols-[14%_auto_30%] gap-size-space items-center overflow-hidden px-size-space max-w-[90rem] m-auto">
+      <div className="grid md:grid-cols-[14%_auto_30%] grid-cols-2 gap-size-space items-center overflow-hidden px-size-space max-w-[90rem] m-auto">
          <Logo />
          <Search />
          <div className="w-full flex justify-between items-center">

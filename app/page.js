@@ -49,7 +49,7 @@ export default function Home() {
          <div className="fixed w-[100%] top-0 left-0 z-10  bg-gradient-to-r from-[#fca5f1] to-[#b5ffff]">
             <Nav />
          </div>
-         <div className="grid lg:grid-cols-[14%_auto_30%] md:grid-cols-[auto_17rem] sm:grid-cols-1 grid-rows-[auto_auto_auto] gap-size-space mt-[100px]  max-w-[90rem] mx-auto px-size-space relative">
+         <div className="grid lg:grid-cols-[14%_auto_30%] md:grid-cols-[auto_17rem]  grid-rows-[auto_auto_auto] gap-size-space mt-[100px]  max-w-[90rem] mx-auto px-size-space relative">
             <Sidebar />
             <div className="mt-[10px] bg-white rounded-lg lg:col-start-2 md:col-start-1">
                <Info />
@@ -63,7 +63,7 @@ export default function Home() {
             <div className=" flex justify-between">
                <CategoryAll />
             </div>
-            <div className="lg:col-start-2 md:col-start-1 grid grid-cols-3 gap-size-space">
+            <div className="lg:col-start-2 md:col-start-1 grid md:grid-cols-3 grid-cols-2 gap-size-space">
                {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
                   <CardItem
                      nameAuthor={nameAuthor}
@@ -73,7 +73,7 @@ export default function Home() {
                   />
                ))}
             </div>
-            <div className=" grid grid-cols-2 h-min rounded-lg gap-size-space md:gap-2">
+            <div className=" md:grid grid-cols-2 h-min rounded-lg gap-size-space md:gap-2 hidden">
                <CardDiscount />
                <CardDiscount />
             </div>

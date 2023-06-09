@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const Info = () => {
    return (
-      <div className="flex w-full h-[240px] items-center">
-         <div className="bg-white flex-1 rounded-lg flex relative h-full">
-            <div className="w-[55%] p-5 pb-0 z-[2] flex flex-col">
+      <div className="md:flex w-full h-[240px] items-center">
+         <div className="bg-white flex-1 rounded-lg md:flex relative h-full">
+            <div className="md:w-[55%] p-5 pb-0 z-[2] flex flex-col h-full">
                <h1 className="pb-[15px] text-3xl md:text-2xl font-bold">
                   ĐÂY LÀ TIÊU ĐỀ 1 NÈ HE!!!
                </h1>
@@ -28,14 +28,14 @@ const Info = () => {
                   </button>
                </div>
             </div>
-            <div className="flex-1 relative">
+            <div className="flex-1 relative hidden md:block">
                <Image
                   src="/images/dfrgds.png"
                   width="0"
                   height="0"
                   sizes="100vw"
                   alt="image"
-                  className="absolute w-[170%] h-[120%] top-[-49px] right-[-96px] z-[1] max-w-none"
+                  className="absolute w-[170%] h-[120%] top-[-49px] right-[-96px] z-[1] max-w-none "
                />
             </div>
          </div>
