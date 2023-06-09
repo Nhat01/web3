@@ -1,17 +1,88 @@
 import Image from "next/image";
-import Nav from "./components/navbar/Nav";
-import Sidebar from "./components/sidebar/Sidebar";
-import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import Nav from "../components/navbar/Nav";
+import Sidebar from "../components/sidebar/Sidebar";
+import Info from "@/components/info/Info";
+import Balance from "@/components/blance/Balance";
+import CategoryList from "@/components/category/CategoryList";
+import CategoryAll from "@/components/category/CategoryAll";
+import CardItem from "@/components/card/CardItem";
+import CardDiscount from "@/components/card/CardDiscount";
+import Logo from "@/components/navbar/Logo";
+import Search from "@/components/navbar/Search";
+import { BellIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
+   const cards = [
+      {
+         nameAuthor: "@baonhat",
+         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
+         nameCard: "Thẻ Pokemon",
+         price: 100,
+      },
+      {
+         nameAuthor: "@hung",
+         imageSrc: "/images/5bfeb617e8ffa6ec2764c54220c7c128.jpg",
+         nameCard: "Thẻ Pokemon",
+         price: 50,
+      },
+      {
+         nameAuthor: "@kimtin",
+         imageSrc: "/images/6e3310737c31dd845d5dbf6a0a7b9129.jpg",
+         nameCard: "Thẻ Pokemon",
+         price: 200,
+      },
+      {
+         nameAuthor: "@baonhat",
+         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
+         nameCard: "Thẻ Pokemon",
+         price: 100,
+      },
+      {
+         nameAuthor: "@baonhat",
+         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
+         nameCard: "Thẻ Pokemon",
+         price: 100,
+      },
+   ];
    return (
-      <div>
+      <div className="h-full w-full">
          <div className="fixed w-[100%] top-0 left-0 z-10  bg-gradient-to-r from-[#fca5f1] to-[#b5ffff]">
             <Nav />
          </div>
-         <div className={`h-screen max-w-[90rem] m-auto`}>
-            <div className="h-screen mt-[10px] relative top-nav-size">
-               <Sidebar />
+         <div className="grid lg:grid-cols-[14%_auto_30%] md:grid-cols-[auto_17rem] sm:grid-cols-1 grid-rows-[auto_auto_auto] gap-size-space mt-[100px]  max-w-[90rem] mx-auto px-size-space relative">
+            <Sidebar />
+            <div className="mt-[10px] bg-white rounded-lg lg:col-start-2 md:col-start-1">
+               <Info />
+            </div>
+            <div className="mt-[10px] rounded-lg flex items-center">
+               <Balance />
+            </div>
+            <div className="lg:col-start-2 md:col-start-1 flex justify-between">
+               <CategoryList />
+            </div>
+            <div className=" flex justify-between">
+               <CategoryAll />
+            </div>
+            <div className="lg:col-start-2 md:col-start-1 grid grid-cols-3 gap-size-space">
+               {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
+                  <CardItem
+                     nameAuthor={nameAuthor}
+                     nameCard={nameCard}
+                     price={price}
+                     imageSrc={imageSrc}
+                  />
+               ))}
+            </div>
+            <div className=" grid grid-cols-2 h-min rounded-lg gap-size-space md:gap-2">
+               <CardDiscount />
+               <CardDiscount />
+            </div>
+         </div>
+         {/* <div className={`h-screen max-w-[90rem] m-auto`}>
+            <div className="h-screen mt-[10px] relative top-nav-size flex">
+               <div className="flex relative">
+                  <Sidebar />
+               </div>
                <div className="w-[100%] pl-[224px] pr-size-space">
                   <div className="flex w-full h-[240px] items-center">
                      <div className="bg-white flex-1 mr-size-space rounded-lg flex relative h-full">
@@ -314,7 +385,7 @@ export default function Home() {
                   </div>
                </div>
             </div>
-         </div>
+         </div> */}
       </div>
    );
 }

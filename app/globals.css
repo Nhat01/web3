@@ -21,7 +21,7 @@ body {
   width: 100%;
 }
 
-button:hover {
+button.btn:hover {
   background: linear-gradient(0.25turn, #fca5f1, #b5ffff);
 }
 
