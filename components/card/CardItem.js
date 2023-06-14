@@ -1,15 +1,16 @@
 import Image from "next/image";
 
-const CardItem = ({ nameAuthor, imageSrc, nameCard, price }) => {
+const CardItem = ({ nameAuthor, imageSrc, nameCard, price, className }) => {
    return (
-      <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
-         <div className="relative h-72">
+      <div
+         className={`bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300 ${className}`}
+      >
+         <div className="relative h-64">
             <Image
-               className="rounded-t-xl"
+               className="rounded-xl p-2"
                alt="card-1"
                src={imageSrc}
                fill
-               style={{ objectFit: "content" }}
             />
          </div>
          <div className="px-4 py-2 flex-1">

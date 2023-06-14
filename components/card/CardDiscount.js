@@ -9,7 +9,7 @@ const CardDiscount = () => {
                alt="card-1"
                src="/images/2487539c2657a919339904b125f54e55.jpg"
                fill
-               style={{ objectFit: "content" }}
+               style={{ objectFit: "contain" }}
             />
          </div>
 
