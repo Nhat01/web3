@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Nav from "../components/navbar/Nav";
 import Sidebar from "../components/sidebar/Sidebar";
@@ -7,8 +9,27 @@ import CategoryList from "@/components/category/CategoryList";
 import CategoryAll from "@/components/category/CategoryAll";
 import CardItem from "@/components/card/CardItem";
 import CardDiscount from "@/components/card/CardDiscount";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_LASTEST = gql`
+   query {
+      nfts(
+         where: { to: "0x54e6505cd9C61460f9225e5A539CD3AF126cd65D" }
+         orderBy: id
+         orderDirection: desc
+      ) {
+         id
+         from
+         to
+         tokenURI
+         price
+      }
+   }
+`;
 
 export default function Home() {
+   const { data, error, loading } = useQuery(GET_LASTEST);
+   console.log("data: ", data);
    const cards = [
       {
          nameAuthor: "@baonhat",
@@ -61,14 +82,27 @@ export default function Home() {
                <CategoryAll />
             </div>
             <div className="lg:col-start-2 md:col-start-1 grid md:grid-cols-3 grid-cols-2 gap-size-space">
-               {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
+               {/* {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
                   <CardItem
                      nameAuthor={nameAuthor}
                      nameCard={nameCard}
                      price={price}
                      imageSrc={imageSrc}
                   />
-               ))}
+               ))} */}
+               {data
+                  ? data.nfts.map((nft) => {
+                       return (
+                          <CardItem
+                             nameAuthor={nft.from}
+                             price={nft.price}
+                             uri={nft.tokenURI}
+                             key={nft.id}
+                             id={nft.id}
+                          />
+                       );
+                    })
+                  : null}
             </div>
             <div className=" md:grid grid-cols-2 h-min rounded-lg gap-size-space md:gap-2 hidden">
                <CardDiscount />

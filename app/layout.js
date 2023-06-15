@@ -1,3 +1,4 @@
+import Providers from "@/components/providers/Providers";
 import "./globals.css";
 import { Inter, Roboto } from "next/font/google";
 
@@ -20,9 +21,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning={true}>
          <body className={`${roboto.variable} ${inter.variable} font-sans`}>
-            {children}
+            <Providers>{children}</Providers>
          </body>
       </html>
    );
