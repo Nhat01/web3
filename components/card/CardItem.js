@@ -111,7 +111,7 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
    }, []);
    return (
       <div className="bg-white rounded-xl cursor-pointer hover:bg-gradient-to-r hover:from-[#fca5f1] hover:to-[#b5ffff] transition-all duration-300">
-         <div className="relative h-52">
+         <div className="relative h-48">
             <MediaRenderer
                className="rounded-2xl p-2"
                src={imageURL}

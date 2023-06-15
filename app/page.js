@@ -9,6 +9,7 @@ import CategoryList from "@/components/category/CategoryList";
 import CategoryAll from "@/components/category/CategoryAll";
 import CardItem from "@/components/card/CardItem";
 import CardDiscount from "@/components/card/CardDiscount";
+import Spinner from "@/components/spinner/Spinner";
 import { gql, useQuery } from "@apollo/client";
 
 const GET_LASTEST = gql`
@@ -29,27 +30,27 @@ const GET_LASTEST = gql`
 
 export default function Home() {
    const { data, error, loading } = useQuery(GET_LASTEST);
-   console.log("data: ", data);
+   if (loading) return <Spinner />;
+   console.log(data);
    return (
       <div className="h-full w-full">
          <div className="fixed w-[100%] top-0 left-0 z-10  bg-gradient-to-r from-[#fca5f1] to-[#b5ffff]">
             <Nav />
          </div>
-         <div className="grid lg:grid-cols-[14%_auto_30%] md:grid-cols-[auto_17rem]  grid-rows-[auto_auto_auto] gap-size-space mt-[100px]  max-w-[90rem] mx-auto px-size-space relative">
-            <Sidebar />
-            <div className="mt-[10px] bg-white rounded-lg lg:col-start-2 md:col-start-1">
+         <div className="grid lg:grid-cols-[auto_30%] md:grid-cols-[auto_17rem]  grid-rows-[auto_auto_auto] gap-size-space mt-[100px]  max-w-[90rem] mx-auto px-size-space relative">
+            <div className="mt-[10px] bg-white rounded-lg lg:col-start-1 md:col-start-1">
                <Info />
             </div>
             <div className="mt-[10px] rounded-lg flex items-center">
                <Balance />
             </div>
-            <div className="lg:col-start-2 md:col-start-1 flex justify-between">
+            <div className="lg:col-start-1 md:col-start-1 flex justify-between">
                <CategoryList />
             </div>
             <div className=" flex justify-between">
                <CategoryAll />
             </div>
-            <div className="lg:col-start-2 md:col-start-1 grid md:grid-cols-3 grid-cols-2 gap-size-space">
+            <div className="lg:col-start-1 md:col-start-1 grid md:grid-cols-4 grid-cols-2 gap-size-space">
                {/* {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
                   <CardItem
                      nameAuthor={nameAuthor}
@@ -72,11 +73,9 @@ export default function Home() {
                     })
                   : null}
             </div>
-            <div className=" md:grid grid-cols-2 h-min rounded-lg gap-size-space md:gap-2 hidden">
-               <CardDiscount />
-               <CardDiscount />
-            </div>
+            <div className=" md:grid grid-cols-2 h-min rounded-lg gap-size-space md:gap-2 hidden"></div>
          </div>
+         <div className="h-20"></div>
       </div>
    );
 }

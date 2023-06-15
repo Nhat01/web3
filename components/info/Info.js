@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const Info = () => {
    return (
-      <div className="md:flex w-full h-[240px] items-center">
+      <div className="md:flex w-full h-[280px] items-center">
          <div className="bg-white flex-1 rounded-lg md:flex relative h-full">
             <div className="md:w-[55%] p-5 pb-0 z-[2] flex flex-col h-full">
                <h1 className="pb-[15px] text-3xl md:text-2xl font-bold">
                   ĐÂY LÀ TIÊU ĐỀ 1 NÈ HE!!!
                </h1>
-               <p className="text-[12px]">
+               <p className="text-[14px]">
                   Đây là trang web của CLB Coder. Nếu bạn yêu thích hãy để lại 1
                   Like và một chút tấm lòng để chúng mình có thêm động lực làm
                   tiếp.
@@ -35,7 +35,7 @@ const Info = () => {
                   height="0"
                   sizes="100vw"
                   alt="image"
-                  className="absolute w-[170%] h-[120%] top-[-49px] right-[-96px] z-[1] max-w-none "
+                  className="absolute w-[165%] h-[117%] top-[-49px] right-[-96px] z-[1] max-w-none "
                />
             </div>
          </div>

@@ -1,16 +1,36 @@
 import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
+import { useAddress } from "@thirdweb-dev/react";
+import { useState } from "react";
+import { ethers } from "ethers";
 
 const Balance = () => {
+   const [userBalance, setBalance] = useState(null);
+   const address = useAddress();
+   function copy(text) {
+      navigator.clipboard.writeText(text);
+   }
+   const provider = ethers.getDefaultProvider(
+      "https://rpc.ankr.com/eth_sepolia"
+   );
+   provider.getBalance(address).then((balance) => {
+      // convert a currency unit from wei to ether
+      const balanceInEth = ethers.utils.formatEther(balance);
+
+      setBalance(Number(balanceInEth).toFixed(3));
+   });
    return (
-      <div className="p-4 h-[220px] bg-white rounded-lg flex-1">
-         <p className="m-0 font-bold">Your Blance</p>
+      <div className="p-4 h-[260px] bg-white rounded-lg flex-1 flex flex-col justify-around">
+         <p className="m-0 font-bold">Your Balance</p>
          <div className="flex">
-            <span className="text-[11px] text-[#8c8c8c]">
-               Crypto0987654ertgcksncdjjd...
-            </span>
-            <DocumentDuplicateIcon className="h-4 w-4 text-green-700" />
+            <span className="text-[11px] text-[#8c8c8c]">{address}</span>
+            <DocumentDuplicateIcon
+               className="h-4 w-4 text-green-700 cursor-pointer"
+               onClick={() => copy(address)}
+            />
          </div>
-         <h1 className="py-4 font-bold text-3xl">$345,765.23</h1>
+         <h1 className="py-2 font-bold text-3xl">
+            Your Balance: {userBalance} ETH
+         </h1>
          <div className="flex items-center">
             <span className="text-sm">Total Offers</span>
             <div className="w-[0.65rem] h-[0.65rem] rounded-full bg-green-700 mr-3 ml-1"></div>
