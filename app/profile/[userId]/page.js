@@ -1,40 +1,93 @@
+"use client";
 import CardItem from "@/components/card/CardItem";
 import { ChevronDownIcon, StarIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { React, useEffect, useState } from "react";
+import { gql, useQuery } from "@apollo/client";
+import { useAddress } from "@thirdweb-dev/react";
+import CardItemSell from "@/components/card/CardItemSell";
+import CardItemCancel from "@/components/card/CardItemCancell";
 
 const Profile = () => {
-   const cards = [
-      {
-         nameAuthor: "@baonhat",
-         imageSrc: "/images/image-1.png",
-         nameCard: "Thẻ Pokemon",
-         price: 100,
-      },
-      {
-         nameAuthor: "@hung",
-         imageSrc: "/images/image-2.png",
-         nameCard: "Thẻ Pokemon",
-         price: 50,
-      },
-      {
-         nameAuthor: "@kimtin",
-         imageSrc: "/images/6e3310737c31dd845d5dbf6a0a7b9129.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 200,
-      },
-      {
-         nameAuthor: "@baonhat",
-         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 100,
-      },
-      {
-         nameAuthor: "@baonhat",
-         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 100,
-      },
-   ];
+   const GET_OWNER = gql`
+      query GetOwner($to: Bytes!) {
+         nfts(where: { to: $to }, orderBy: id, orderDirection: desc) {
+            id
+            from
+            to
+            tokenURI
+            price
+         }
+      }
+   `;
+   const GetOwner = (to) => {
+      const { data, error, loading, refetch } = useQuery(GET_OWNER, {
+         variables: {
+            to,
+         },
+      });
+      // console.log({data, error, loading})
+      return {
+         data,
+         error,
+         loading,
+         refetch,
+      };
+   };
+   const GET_OWNER_SELLING = gql`
+      query GetOwner($from: Bytes!) {
+         nfts(
+            where: {
+               to: "0x54e6505cd9C61460f9225e5A539CD3AF126cd65D"
+               from: $from
+            }
+            orderBy: id
+            orderDirection: desc
+         ) {
+            id
+            from
+            to
+            tokenURI
+            price
+         }
+      }
+   `;
+   const GetOwnerSelling = (from) => {
+      const { data, error, loading, refetch } = useQuery(GET_OWNER_SELLING, {
+         variables: {
+            from,
+         },
+      });
+      return {
+         data,
+         error,
+         loading,
+         refetch,
+      };
+   };
+   const to = useAddress();
+   const from = useAddress();
+   const {
+      data: OwnerData,
+      error: OwnerError,
+      loading: OwnerLoading,
+      refetch: OwnerRefetch,
+   } = GetOwner(to);
+   const {
+      data: SellingData,
+      error: SellingError,
+      loading: SellingLoading,
+      refetch: SellingRefetch,
+   } = GetOwnerSelling(from);
+
+   const [isOpen, setOpen] = useState("Sale");
+   const [isOpenOwner, setOpenOwner] = useState(false);
+   useEffect(() => {
+      OwnerRefetch();
+      SellingRefetch();
+      console.log("sell: ", SellingData);
+      console.log("owner: ", OwnerData);
+   });
    return (
       <div className="bg-white">
          <div className=" h-32 bg-gray-600"></div>
@@ -66,8 +119,18 @@ const Profile = () => {
          </div>
          <div className=" max-w-5xl mx-auto ">
             <div className="flex gap-6 justify-center mt-6 border-b-[1px] border-[#E5E5E5] text-[#7E7C7C]">
-               <button className="pb-2">On Sale</button>
-               <button className="pb-2">Owned</button>
+               <button
+                  className={`pb-2 ${isOpen === "Sale" ? "text-black" : null}`}
+                  onClick={() => setOpen("Sale")}
+               >
+                  On Sale
+               </button>
+               <button
+                  className={`pb-2 ${isOpen === "Owner" ? "text-black" : null}`}
+                  onClick={() => setOpen("Owner")}
+               >
+                  Owned
+               </button>
                <button className="pb-2">Created</button>
                <button className="pb-2">Collections</button>
             </div>
@@ -92,15 +155,31 @@ const Profile = () => {
                </div>
 
                <div className="grid grid-cols-4 gap-size-space mt-6">
-                  {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
-                     <CardItem
-                        nameAuthor={nameAuthor}
-                        nameCard={nameCard}
-                        price={price}
-                        imageSrc={imageSrc}
-                        className="border-[1px] border-[#E5E5E5]"
-                     />
-                  ))}
+                  {isOpen === "Sale" &&
+                     SellingData &&
+                     SellingData.nfts.map((nft) => {
+                        return (
+                           <CardItemCancel
+                              nameAuthor={nft.to}
+                              uri={nft.tokenURI}
+                              id={nft.id}
+                              price={nft.price}
+                           />
+                        );
+                     })}
+
+                  {isOpen === "Owner" &&
+                     OwnerData &&
+                     OwnerData.nfts.map((nft) => {
+                        return (
+                           <CardItemSell
+                              nameAuthor={nft.to}
+                              uri={nft.tokenURI}
+                              id={nft.id}
+                              price={nft.price}
+                           />
+                        );
+                     })}
                </div>
             </div>
          </div>

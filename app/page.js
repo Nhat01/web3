@@ -30,38 +30,6 @@ const GET_LASTEST = gql`
 export default function Home() {
    const { data, error, loading } = useQuery(GET_LASTEST);
    console.log("data: ", data);
-   const cards = [
-      {
-         nameAuthor: "@baonhat",
-         imageSrc: "/images/image-1.png",
-         nameCard: "Thẻ Pokemon",
-         price: 100,
-      },
-      {
-         nameAuthor: "@hung",
-         imageSrc: "/images/5bfeb617e8ffa6ec2764c54220c7c128.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 50,
-      },
-      {
-         nameAuthor: "@kimtin",
-         imageSrc: "/images/6e3310737c31dd845d5dbf6a0a7b9129.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 200,
-      },
-      {
-         nameAuthor: "@baonhat",
-         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 100,
-      },
-      {
-         nameAuthor: "@baonhat",
-         imageSrc: "/images/2487539c2657a919339904b125f54e55.jpg",
-         nameCard: "Thẻ Pokemon",
-         price: 100,
-      },
-   ];
    return (
       <div className="h-full w-full">
          <div className="fixed w-[100%] top-0 left-0 z-10  bg-gradient-to-r from-[#fca5f1] to-[#b5ffff]">
