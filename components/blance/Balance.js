@@ -2,10 +2,12 @@ import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { useAddress } from "@thirdweb-dev/react";
 import { useState } from "react";
 import { ethers } from "ethers";
+import NotLoginBalance from "./NotLoginBalance";
 
 const Balance = () => {
    const [userBalance, setBalance] = useState(null);
    const address = useAddress();
+   if (!address) return <NotLoginBalance />;
    function copy(text) {
       navigator.clipboard.writeText(text);
    }

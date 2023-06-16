@@ -8,6 +8,7 @@ import { useState } from "react";
 const Nav = () => {
    const [isOpen, setOpen] = useState(false);
    const [isOpenSideBar, setOpenSideBar] = useState(false);
+   const [isHoverConnection, setHoverConnection] = useState(true);
 
    return (
       <div className="grid md:grid-cols-[14%_auto_30%] grid-cols-2 gap-size-space items-center overflow-hidden px-size-space max-w-[90rem] m-auto">
@@ -24,7 +25,10 @@ const Nav = () => {
                onMouseLeave={() => setOpenSideBar(false)}
                className=""
             >
-               <ConnectWallet theme="light" />
+               <ConnectWallet
+                  theme="light"
+                  className="hover:!bg-white hover:!text-black"
+               />
             </div>
             <div
                onMouseEnter={() => setOpenSideBar(true)}

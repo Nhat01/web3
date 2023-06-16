@@ -154,7 +154,7 @@ const Profile = () => {
                   </div>
                </div>
 
-               <div className="grid grid-cols-4 gap-size-space mt-6">
+               <div className="grid grid-cols-3 lg:grid-cols-4 gap-size-space mt-6">
                   {isOpen === "Sale" &&
                      SellingData &&
                      SellingData.nfts.map((nft) => {

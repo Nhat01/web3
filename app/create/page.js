@@ -35,18 +35,17 @@ const Create = () => {
          alert("You need connect wallet to create NFT!");
       } else {
          e.preventDefault();
-         // setSelectedFile(e.target.files)
-         // uri.image = selectedFile
-         // const dataToUpload = [uri];
-         // // And upload the data with the upload function
-         // const uris = await upload({ data: dataToUpload });
-         // try {
-         //     const data = await mintNFT({ args: uris });
-         //     console.info("contract call successs", data);
-         // } catch (err) {
-         //     console.error("contract call failure", err);
-         // }
-         console.log("Lo rui");
+         setSelectedFile(e.target.files);
+         uri.image = selectedFile;
+         const dataToUpload = [uri];
+         // And upload the data with the upload function
+         const uris = await upload({ data: dataToUpload });
+         try {
+            const data = await mintNFT({ args: uris });
+            console.info("contract call successs", data);
+         } catch (err) {
+            console.error("contract call failure", err);
+         }
       }
    };
    return (
