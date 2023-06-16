@@ -3,6 +3,7 @@ import { MediaRenderer, useAddress, useMetamask } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { abi } from "../../abi.js";
+import Link from "next/link.js";
 
 const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
    const connectMetamask = useMetamask();
@@ -70,14 +71,18 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
       getResponse(uri);
    }, []);
    return (
-      <div className="bg-white rounded-xl cursor-pointer transition-all duration-300">
-         <div className="relative h-48">
+      <Link
+         href={`/card/${id}`}
+         className="bg-white rounded-xl cursor-pointer transition-all duration-300"
+      >
+         <div className="relative">
             <MediaRenderer
-               className="rounded-2xl p-2"
+               className="rounded-2xl p-2 aspect-[1/1]"
                src={imageURL}
                alt=""
                width="240"
                height="240"
+               style={{ objectFit: "unset" }}
             />
          </div>
 
@@ -103,7 +108,7 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
                {buying ? "Buying" : `${canBuy ? "Buy" : "You are Owner"}`}
             </button>
          </div>
-      </div>
+      </Link>
    );
 };
 

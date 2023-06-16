@@ -33,7 +33,7 @@ const Nav = () => {
             <div
                onMouseEnter={() => setOpenSideBar(true)}
                onMouseLeave={() => setOpenSideBar(false)}
-               className="hidden lg:block absolute z-20 top-[70px] right-[55px] row-span-3 lg:w-[13.5%] 2xl:w-[195px]"
+               className="block absolute z-20 top-[70px] xl:right-[calc((100%_-_88rem)/2)] right-[16px] row-span-3 "
             >
                {isOpenSideBar && <SidebarProfile />}
             </div>
