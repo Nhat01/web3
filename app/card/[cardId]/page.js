@@ -7,6 +7,7 @@ import { ethers } from "ethers";
 import { abi } from "../../../abi.js";
 import { useContractWrite, useContract } from "@thirdweb-dev/react";
 import Spinner from "@/components/spinner/Spinner.js";
+import Nav from "@/components/navbar/Nav.js";
 const GET_OWNER = gql`
    query GetOwner($id: ID!) {
       nfts(where: { id: $id }) {
@@ -119,64 +120,49 @@ const CardDetails = () => {
       getResponse(url);
    }, []);
    return (
-      <div className="bg-white p-size-space">
-         {/* {data
-            ? data.nfts.map((nft) => {
-                 return (
-                    <div className="bg-white w-full h-screen">
-                       <MediaRenderer src={imageURL} />
-                       <p>Title: {title}</p>
-                       <p>description: {description}</p>
-                       <p>price: {eth} ETH</p>
-                       <p>Owner: {nft.from}</p>
-                       <button
-                          onClick={BuyNFT}
-                          className={`bg-red-400 p-4 ${
-                             canBuy ? null : "hidden"
-                          }`}
-                       >
-                          {buying ? "Buying" : "Buy"}
-                       </button>
-                       <button
-                          onClick={CancellNFT}
-                          className={`bg-blue-400 p-4 ${
-                             canBuy ? "hidden" : null
-                          }`}
-                       >
-                          {isCancellLoading ? "Cancelling" : "Cancell"}
-                       </button>
-                    </div>
-                 );
-              })
-            : null} */}
-         <div className="flex justify-evenly">
-            <MediaRenderer
-               className="rounded-2xl p-2 aspect-[1/1]"
-               src={imageURL}
-               alt=""
-               width="40%"
-               height="auto"
-               style={{ objectFit: "unset" }}
-            />
-            <div className="flex flex-col justify-around text-2xl">
-               <h1 className=" text-3xl font-bold">Title: {title}</h1>
-               <span className="text-green-700">price: {eth} ETH</span>
-               <span>description: {description}</span>
-               <span className="overflow-hidden whitespace-nowrap text-ellipsis">
-                  Owner: {nameAuthor}
-               </span>
-               <button
-                  onClick={BuyNFT}
-                  className={`py-4 px-7 bg-[#b5ffff] rounded-xl mt-4 text-sm font-bold hover:bg-[#fca5f1] hover:text-white transition-all duration-300 w-full ${
-                     canBuy ? "" : "cursor-not-allowed"
-                  }`}
-                  disabled={!canBuy}
-               >
-                  {buying ? "Buying" : `${canBuy ? "Buy" : "You are Owner"}`}
-               </button>
+      <>
+         <div className="fixed w-[100%] top-0 left-0 z-10  bg-gradient-to-r from-[#fca5f1] to-[#b5ffff]">
+            <Nav />
+         </div>
+         <div className="bg-white p-size-space mt-[80px]">
+            <div className="flex justify-evenly">
+               <MediaRenderer
+                  className="rounded-2xl p-2 aspect-[1/1]"
+                  src={imageURL}
+                  alt=""
+                  width="40%"
+                  height="auto"
+                  style={{ objectFit: "unset" }}
+               />
+               <div className="flex flex-col justify-around text-2xl">
+                  <h1 className=" text-3xl font-bold">Title: {title}</h1>
+                  <span className="text-green-700">price: {eth} ETH</span>
+                  <span>description: {description}</span>
+                  <span className="overflow-hidden whitespace-nowrap text-ellipsis">
+                     Owner: {nameAuthor}
+                  </span>
+                  <button
+                     onClick={BuyNFT}
+                     className={`py-4 px-7 bg-[#b5ffff] rounded-xl mt-4 text-sm font-bold hover:bg-[#fca5f1] hover:text-white transition-all duration-300 w-full ${
+                        canBuy ? "" : "hidden"
+                     }`}
+                     disabled={!canBuy}
+                  >
+                     {buying ? "Buying" : `${canBuy ? "Buy" : "You are Owner"}`}
+                  </button>
+
+                  <button
+                     onClick={CancellNFT}
+                     className={`py-4 px-7 bg-[#b5ffff] rounded-xl mt-4 text-sm font-bold hover:bg-[#fca5f1] hover:text-white transition-all duration-300 w-full ${
+                        canBuy ? "hidden" : null
+                     }`}
+                  >
+                     {isCancellLoading ? "Cancelling" : "Cancell"}
+                  </button>
+               </div>
             </div>
          </div>
-      </div>
+      </>
    );
 };
 

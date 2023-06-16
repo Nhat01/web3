@@ -11,6 +11,11 @@ import CardItem from "@/components/card/CardItem";
 import CardDiscount from "@/components/card/CardDiscount";
 import Spinner from "@/components/spinner/Spinner";
 import { gql, useQuery } from "@apollo/client";
+import {
+   EnvelopeIcon,
+   MapPinIcon,
+   PhoneIcon,
+} from "@heroicons/react/24/outline";
 
 const GET_LASTEST = gql`
    query {
@@ -51,14 +56,6 @@ export default function Home() {
                <CategoryAll />
             </div>
             <div className="lg:col-start-1 md:col-start-1 grid md:grid-cols-4 grid-cols-2 gap-size-space">
-               {/* {cards?.map(({ nameAuthor, imageSrc, nameCard, price }) => (
-                  <CardItem
-                     nameAuthor={nameAuthor}
-                     nameCard={nameCard}
-                     price={price}
-                     imageSrc={imageSrc}
-                  />
-               ))} */}
                {data
                   ? data.nfts.map((nft) => {
                        return (
@@ -118,15 +115,16 @@ export default function Home() {
                         </p>
                         <div className="text-sm my-0 text-gray-400">
                            <p className="m-0">
-                              <i className="fas fa-map-marker-alt"></i> 84
+                              <MapPinIcon class="h-4 w-4 text-gray-400" /> 84
                               Street, City, State 24813
                            </p>
                            <p className="m-0">
-                              <i className="fas fa-mobile-alt"></i> +00 (123)
-                              456 78 90
+                              <PhoneIcon className="h-4 w-4 text-gray-400" />{" "}
+                              +00 (123) 456 78 90
                            </p>
                            <p className="m-0">
-                              <i className="far fa-envelope"></i> info@reen.com
+                              <EnvelopeIcon class="h-4 w-4 text-gray-400" />{" "}
+                              info@reen.com
                            </p>
                         </div>
                      </div>
