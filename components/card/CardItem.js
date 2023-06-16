@@ -70,9 +70,18 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
       }
       getResponse(uri);
    }, []);
+
    return (
       <Link
-         href={`/card/${id}`}
+         href={{
+            pathname: `/card/${id}`,
+            query: {
+               id: `${id}`,
+               url: `${uri}`,
+               price: `${price}`,
+               owner: `${nameAuthor}`,
+            },
+         }}
          className="bg-white rounded-xl cursor-pointer transition-all duration-300"
       >
          <div className="relative">
