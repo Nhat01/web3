@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { abi } from "../../abi.js";
 import Link from "next/link.js";
 
-const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
+const CardItem = ({ nameAuthor, uri, nameCard, price, id, searchKeyWord }) => {
    const connectMetamask = useMetamask();
    const addressOfBuyer = useAddress();
    // tạo thuộc tính để thông báo buying
@@ -49,6 +49,7 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
    const [title, setTitle] = useState("");
    const [description, setDes] = useState("");
    const [eth, setETH] = useState("");
+   const [trueNFT, setTrueNFT] = useState(false);
    useEffect(() => {
       async function getResponse(url) {
          if (!url.startsWith("ipfs://")) throw new Error("Not an IPFS url");
@@ -63,6 +64,10 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
 
          setImage(image);
          setTitle(title);
+         const checked = title
+            .toLowerCase()
+            .includes(searchKeyWord.toLowerCase());
+         if (checked) setTrueNFT(true);
          setDes(des);
          setETH(ethers.utils.formatEther(price));
       }
@@ -80,7 +85,9 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
                owner: `${nameAuthor}`,
             },
          }}
-         className="bg-white rounded-xl cursor-pointer transition-all duration-300"
+         className={`${
+            trueNFT ? null : "hidden"
+         } bg-white rounded-xl cursor-pointer transition-all duration-300`}
       >
          <div className="relative">
             <MediaRenderer
