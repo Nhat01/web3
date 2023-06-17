@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Smart contract
+https://thirdweb.com/sepolia/0x54e6505cd9C61460f9225e5A539CD3AF126cd65D
+
 ## Getting Started
 
 First after clone
