@@ -2,7 +2,6 @@ import { useAddress } from "@thirdweb-dev/react";
 import Link from "next/link";
 const SidebarProfile = () => {
    const address = useAddress();
-   console.log(address);
    if (!address) return null;
    return (
       <div className="w-[210px] text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">

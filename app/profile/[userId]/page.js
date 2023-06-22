@@ -131,29 +131,9 @@ const Profile = () => {
                >
                   Owned
                </button>
-               <button className="pb-2">Created</button>
-               <button className="pb-2">Collections</button>
             </div>
 
             <div className="mt-8">
-               <div className="flex justify-between">
-                  <div className="flex gap-6">
-                     <button className="px-2 py-1 border-[1px] border-[#D1D0D0] rounded-lg">
-                        Collections
-                     </button>
-                     <button className="px-2 py-1 border-[1px] border-[#D1D0D0] rounded-lg">
-                        Category
-                     </button>
-                     <button className="px-2 py-1 border-[1px] border-[#D1D0D0] rounded-lg">
-                        Price Range
-                     </button>
-                  </div>
-                  <div className="flex items-center border-[1px] border-[#D1D0D0] px-2 py-1 rounded-lg cursor-pointer text-[#7E7C7C]">
-                     <span className="mr-4">Added Recently</span>
-                     <ChevronDownIcon className="h-5 w-5" />
-                  </div>
-               </div>
-
                <div className="grid grid-cols-3 lg:grid-cols-4 gap-size-space mt-6">
                   {isOpen === "Sale" &&
                      SellingData &&
