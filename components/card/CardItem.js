@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { abi } from "../../abi.js";
 import Link from "next/link.js";
+import Spinner from "../spinner/Spinner.js";
 
 const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
    const connectMetamask = useMetamask();
@@ -112,7 +113,11 @@ const CardItem = ({ nameAuthor, uri, nameCard, price, id }) => {
                }`}
                disabled={!canBuy}
             >
-               {buying ? "Buying" : `${canBuy ? "Buy" : "You are Owner"}`}
+               {buying ? (
+                  <Spinner inCard />
+               ) : (
+                  `${canBuy ? "Buy" : "You are Owner"}`
+               )}
             </button>
          </div>
       </Link>
